@@ -1,0 +1,93 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="template.master.cs" Inherits="SoftCL.template" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Cursos Libres de la UTN">
+    <meta name="author" content="Luis Miguel Bolaños Mejías">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <title>Software para Cursos Libres</title>
+    <link rel="icon" href="img/logo.png">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <nav class="navbar navbar-inverse" style="background-color:navy">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" style="color:white" href="default.aspx">Software para Cursos Libres</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a style="color:white" href="#"><span class="glyphicon glyphicon-user"></span> Registro</a></li>
+        <li><a style="color:white" href="#" id="btnLogin"><span class="glyphicon glyphicon-log-in"></span> Entrar</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        
+      <!-- Modal -->
+  <div class="modal fade " id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="width:300px">
+        <div class="modal-header" style="padding:0px 0px;">
+            <div>
+                <a class="navbar-brand" href="default.aspx">
+            <asp:Image ID="Image2" runat="server" ImageUrl="~/img/logo.png" Width="30px" style="position:fixed" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Cursos Libres</a>
+            </div>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body" style="padding:20px 10px;">
+          <div role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Usuario</label>
+                <asp:TextBox ID="txtUsuario" runat="server" type="text" class="form-control" placeholder="Nombre de Usuario"></asp:TextBox>
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Clave</label>
+                <asp:TextBox ID="txtClave" runat="server"  type="password" class="form-control" placeholder="Clave"></asp:TextBox>
+            </div>
+              <asp:Button ID="Button1" CssClass="btn btn-info btn-block" runat="server" Text="Iniciar" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
+            <p>Olvidó su clave?</p>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+    </form>
+    <div style="background-color:navy;vertical-align:middle" class="navbar navbar-inverse navbar-fixed-bottom"><p style="color:white;text-align:center">&#9400;&nbsp;<%=DateTime.Now.Year%>&nbsp;Software para cursos libres</p></div>
+      <script>
+          $(document).ready(function () {
+              $("#btnLogin").click(function () {
+                  $("#myModal").modal();    
+                  $('#myModal').on('shown.bs.modal', function () {
+                      $('#txtUsuario').focus();
+                      $('#txtUsuario').text="";
+                  })  
+              });
+          });
+</script>
+</body>
+</html>
